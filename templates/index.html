@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Sudoku</title>
+</head>
+<body class="bg-gray-800">
+    
+    
+    <div class="grid grid-cols-4">
+        <p class="text-5xl place-self-center col-span-4 mt-4 mb-8 text-gray-400">Sudoku</p>
+
+        <form class="grid grid-cols-9 col-start-2 col-span-2 text-gray-500" action="{{ url_for('resultado') }}" method="post">
+            
+            <div class="grid grid-cols-3 col-span-3 border border-black bg-black">
+                <!--<p class="py-3 px-5 justify-self-center">{{ n1_f1 }}</p>-->
+                {% set mostrar_0 = aleatorio_0 %}
+                {% if mostrar_0 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n1_f1" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n1_f1" value="{{ n1_f1 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_1 = aleatorio_1 %}
+                {% if mostrar_1 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n2_f1" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n2_f1" value="{{ n2_f1 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_2 = aleatorio_2 %}
+                {% if mostrar_2 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n3_f1" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n3_f1" value="{{ n3_f1 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_3 = aleatorio_3 %}
+                {% if mostrar_3 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n1_f2" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n1_f2" value="{{ n1_f2 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_4 = aleatorio_4 %}
+                {% if mostrar_4 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n2_f2" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n2_f2" value="{{ n2_f2 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_5 = aleatorio_5 %}
+                {% if mostrar_5 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n3_f2" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n3_f2" value="{{ n3_f2 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_6 = aleatorio_6 %}
+                {% if mostrar_6 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n1_f3" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n1_f3" value="{{ n1_f3 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_7 = aleatorio_7 %}
+                {% if mostrar_7 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n2_f3" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n2_f3" value="{{ n2_f3 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_8 = aleatorio_8 %}
+                {% if mostrar_8 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n3_f3" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n3_f3" value="{{ n3_f3 }}" readonly="readonly">
+                {% endif %}
+            </div>
+
+            <div class="grid grid-cols-3 col-span-3 border border-black mx-1 bg-black">
+                {% set mostrar_9 = aleatorio_9 %}
+                {% if mostrar_9 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n4_f1" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n4_f1" value="{{ n4_f1 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_10 = aleatorio_10 %}
+                {% if mostrar_10 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n5_f1" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n5_f1" value="{{ n5_f1 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_11 = aleatorio_11 %}
+                {% if mostrar_11 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n6_f1" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n6_f1" value="{{ n6_f1 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_12 = aleatorio_12 %}
+                {% if mostrar_12 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n4_f2" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n4_f2" value="{{ n4_f2 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_13 = aleatorio_13 %}
+                {% if mostrar_13 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n5_f2" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n5_f2" value="{{ n5_f2 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_14 = aleatorio_14 %}
+                {% if mostrar_14 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n6_f2" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n6_f2" value="{{ n6_f2 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_15 = aleatorio_15 %}
+                {% if mostrar_15 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n4_f3" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n4_f3" value="{{ n4_f3 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_16 = aleatorio_16 %}
+                {% if mostrar_16 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n5_f3" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n5_f3" value="{{ n5_f3 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_17 = aleatorio_17 %}
+                {% if mostrar_17 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n6_f3" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n6_f3" value="{{ n6_f3 }}" readonly="readonly">
+                {% endif %}
+            </div>
+
+            <div class="grid grid-cols-3 col-span-3 border border-black bg-black">
+                {% set mostrar_18 = aleatorio_18 %}
+                {% if mostrar_18 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n7_f1" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n7_f1" value="{{ n7_f1 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_19 = aleatorio_19 %}
+                {% if mostrar_19 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n8_f1" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n8_f1" value="{{ n8_f1 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_20 = aleatorio_20 %}
+                {% if mostrar_20 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n9_f1" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n9_f1" value="{{ n9_f1 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_21 = aleatorio_21 %}
+                {% if mostrar_21 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n7_f2" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n7_f2" value="{{ n7_f2 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_22 = aleatorio_22 %}
+                {% if mostrar_22 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n8_f2" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n8_f2" value="{{ n8_f2 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_23 = aleatorio_23 %}
+                {% if mostrar_23 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n9_f2" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n9_f2" value="{{ n9_f2 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_24 = aleatorio_24 %}
+                {% if mostrar_24 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n7_f3" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n7_f3" value="{{ n7_f3 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_25 = aleatorio_25 %}
+                {% if mostrar_25 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n8_f3" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n8_f3" value="{{ n8_f3 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_26 = aleatorio_26 %}
+                {% if mostrar_26 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n9_f3" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n9_f3" value="{{ n9_f3 }}" readonly="readonly">
+                {% endif %}
+            </div>
+
+            <div class="grid grid-cols-3 col-span-3 border border-black my-1 bg-black">
+                {% set mostrar_27 = aleatorio_27 %}
+                {% if mostrar_27 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n1_f4" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n1_f4" value="{{ n1_f4 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_28 = aleatorio_28 %}
+                {% if mostrar_28 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n2_f4" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n2_f4" value="{{ n2_f4 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_29 = aleatorio_29 %}
+                {% if mostrar_29 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n3_f4" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n3_f4" value="{{ n3_f4 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_30 = aleatorio_30 %}
+                {% if mostrar_30 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n1_f5" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n1_f5" value="{{ n1_f5 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_31 = aleatorio_31 %}
+                {% if mostrar_31 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n2_f5" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n2_f5" value="{{ n2_f5 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_32 = aleatorio_32 %}
+                {% if mostrar_32 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n3_f5" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n3_f5" value="{{ n3_f5 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_33 = aleatorio_33 %}
+                {% if mostrar_33 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n1_f6" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n1_f6" value="{{ n1_f6 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_34 = aleatorio_34 %}
+                {% if mostrar_34 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n2_f6" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n2_f6" value="{{ n2_f6 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_35 = aleatorio_35 %}
+                {% if mostrar_35 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n3_f6" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n3_f6" value="{{ n3_f6 }}" readonly="readonly">
+                {% endif %}
+            </div>
+
+            <div class="grid grid-cols-3 col-span-3 border border-black mx-1 my-1 bg-black">
+                {% set mostrar_36 = aleatorio_36 %}
+                {% if mostrar_36 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n4_f4" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n4_f4" value="{{ n4_f4 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_37 = aleatorio_37 %}
+                {% if mostrar_37 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n5_f4" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n5_f4" value="{{ n5_f4 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_38 = aleatorio_38 %}
+                {% if mostrar_38 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n6_f4" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n6_f4" value="{{ n6_f4 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_39 = aleatorio_39 %}
+                {% if mostrar_39 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n4_f5" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n4_f5" value="{{ n4_f5 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_40 = aleatorio_40 %}
+                {% if mostrar_40 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n5_f5" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n5_f5" value="{{ n5_f5 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_41 = aleatorio_41 %}
+                {% if mostrar_41 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n6_f5" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n6_f5" value="{{ n6_f5 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_42 = aleatorio_42 %}
+                {% if mostrar_42 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n4_f6" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n4_f6" value="{{ n4_f6 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_43 = aleatorio_43 %}
+                {% if mostrar_43 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n5_f6" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n5_f6" value="{{ n5_f6 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_44 = aleatorio_44 %}
+                {% if mostrar_44 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n6_f6" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n6_f6" value="{{ n6_f6 }}" readonly="readonly">
+                {% endif %}
+            </div>
+
+            <div class="grid grid-cols-3 col-span-3 border border-black  my-1 bg-black">
+                {% set mostrar_45 = aleatorio_45 %}
+                {% if mostrar_45 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n7_f4" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n7_f4" value="{{ n7_f4 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_46 = aleatorio_46 %}
+                {% if mostrar_46 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n8_f4" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n8_f4" value="{{ n8_f4 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_47 = aleatorio_47 %}
+                {% if mostrar_47 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n9_f4" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n9_f4" value="{{ n9_f4 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_48 = aleatorio_48 %}
+                {% if mostrar_48 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n7_f5" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n7_f5" value="{{ n7_f5 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_49 = aleatorio_49 %}
+                {% if mostrar_49 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n8_f5" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n8_f5" value="{{ n8_f5 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_50 = aleatorio_50 %}
+                {% if mostrar_50 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n9_f5" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n9_f5" value="{{ n9_f5 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_51 = aleatorio_51 %}
+                {% if mostrar_51 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n7_f6" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n7_f6" value="{{ n7_f6 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_52 = aleatorio_52 %}
+                {% if mostrar_52 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n8_f6" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n8_f6" value="{{ n8_f6 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_53 = aleatorio_53 %}
+                {% if mostrar_53 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n9_f6" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n9_f6" value="{{ n9_f6 }}" readonly="readonly">
+                {% endif %}
+            </div>
+
+            <div class="grid grid-cols-3 col-span-3 border border-black bg-black">
+                {% set mostrar_54 = aleatorio_54 %}
+                {% if mostrar_54 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n1_f7" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n1_f7" value="{{ n1_f7 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_55 = aleatorio_55 %}
+                {% if mostrar_55 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n2_f7" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n2_f7" value="{{ n2_f7 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_56 = aleatorio_56 %}
+                {% if mostrar_56 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n3_f7" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n3_f7" value="{{ n3_f7 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_57 = aleatorio_57 %}
+                {% if mostrar_57 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n1_f8" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n1_f8" value="{{ n1_f8 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_58 = aleatorio_58 %}
+                {% if mostrar_58 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n2_f8" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n2_f8" value="{{ n2_f8 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_59 = aleatorio_59 %}
+                {% if mostrar_59 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n3_f8" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n3_f8" value="{{ n3_f8 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_60 = aleatorio_60 %}
+                {% if mostrar_60 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n1_f9" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n1_f9" value="{{ n1_f9 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_61 = aleatorio_61 %}
+                {% if mostrar_61 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n2_f9" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n2_f9" value="{{ n2_f9 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_62 = aleatorio_62 %}
+                {% if mostrar_62 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n3_f9" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n3_f9" value="{{ n3_f9 }}" readonly="readonly">
+                {% endif %}
+            </div>
+
+            <div class="grid grid-cols-3 col-span-3 border border-black mx-1 bg-black">
+                {% set mostrar_63 = aleatorio_63 %}
+                {% if mostrar_63 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n4_f7" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n4_f7" value="{{ n4_f7 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_64 = aleatorio_64 %}
+                {% if mostrar_64 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n5_f7" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n5_f7" value="{{ n5_f7 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_65 = aleatorio_65 %}
+                {% if mostrar_65 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n6_f7" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n6_f7" value="{{ n6_f7 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_66 = aleatorio_66 %}
+                {% if mostrar_66 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n4_f8" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n4_f8" value="{{ n4_f8 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_67 = aleatorio_67 %}
+                {% if mostrar_67 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n5_f8" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n5_f8" value="{{ n5_f8 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_68 = aleatorio_68 %}
+                {% if mostrar_68 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n6_f8" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n6_f8" value="{{ n6_f8 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_69 = aleatorio_69 %}
+                {% if mostrar_69 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n4_f9" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n4_f9" value="{{ n4_f9 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_70 = aleatorio_70 %}
+                {% if mostrar_70 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n5_f9" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n5_f9" value="{{ n5_f9 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_71 = aleatorio_71 %}
+                {% if mostrar_71 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n6_f9" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n6_f9" value="{{ n6_f9 }}" readonly="readonly">
+                {% endif %}
+            </div>
+
+            <div class="grid grid-cols-3 col-span-3 border border-black bg-black">
+                {% set mostrar_72 = aleatorio_72 %}
+                {% if mostrar_72 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n7_f7" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n7_f7" value="{{ n7_f7 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_73 = aleatorio_73 %}
+                {% if mostrar_73 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n8_f7" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n8_f7" value="{{ n8_f7 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_74 = aleatorio_74 %}
+                {% if mostrar_74 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n9_f7" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n9_f7" value="{{ n9_f7 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_75 = aleatorio_75 %}
+                {% if mostrar_75 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n7_f8" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n7_f8" value="{{ n7_f8 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_76 = aleatorio_76 %}
+                {% if mostrar_76 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n8_f8" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n8_f8" value="{{ n8_f8 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_77 = aleatorio_77 %}
+                {% if mostrar_77 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n9_f8" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n9_f8" value="{{ n9_f8 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_78 = aleatorio_78 %}
+                {% if mostrar_78 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n7_f9" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n7_f9" value="{{ n7_f9 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_79 = aleatorio_79 %}
+                {% if mostrar_79 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n8_f9" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n8_f9" value="{{ n8_f9 }}" readonly="readonly">
+                {% endif %}
+                {% set mostrar_80 = aleatorio_80 %}
+                {% if mostrar_80 == 0 %}
+                <input class="w-full pl-7 justify-self-center bg-black text-white" type="number" name="n9_f9" min="1" max="9" required>
+                {% else %}
+                <input class="w-full pl-7 justify-self-center bg-black" type="number" name="n9_f9" value="{{ n9_f9 }}" readonly="readonly">
+                {% endif %}
+            </div>
+            <button class="col-span-3 border border-black bg-black mt-4">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
